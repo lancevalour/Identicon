@@ -1,0 +1,40 @@
+<project name="App" default="generate_jars">
+
+	<property name="jar_directory" value="${basedir}\jars" />
+	<property name="package_directory" value="${basedir}\src\yicheng\java\identicon" />
+	<property name="build_directory" value="${basedir}\build" />
+	<property name="src_directory" value="${basedir}\src" />
+
+
+
+
+	
+
+	<target name="clean_project">
+		<delete dir="${build_directory}" />
+	</target>
+
+
+	<target name="build_project" depends="clean_project">
+		<mkdir dir="${build_directory}" />
+		<javac destdir="${build_directory}" source="1.6" target="1.6">
+
+			<src path="${src_directory}" />
+		
+		</javac>
+	</target>
+
+	<target name="generate_jars" depends="build_project">
+		<delete dir="${jar_directory}" />
+		<mkdir dir="${jar_directory}" />
+
+		<jar destfile="${jar_directory}\identicon.jar" basedir="${build_directory}" keepcompression="true">
+			
+		</jar>
+
+
+	</target>
+
+
+
+</project>
