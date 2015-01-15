@@ -4,14 +4,15 @@
 	<property name="package_directory" value="${basedir}\src\yicheng\java\identicon" />
 	<property name="build_directory" value="${basedir}\build" />
 	<property name="src_directory" value="${basedir}\src" />
+	<property name="doc_directory" value="${basedir}\docs"/>
 
 
 
 
-	
 
 	<target name="clean_project">
-		<delete dir="${build_directory}" />
+		<delete dir="${build_directory}"
+		/>
 	</target>
 
 
@@ -20,19 +21,25 @@
 		<javac destdir="${build_directory}" source="1.6" target="1.6">
 
 			<src path="${src_directory}" />
-		
+
 		</javac>
 	</target>
 
-	<target name="generate_jars" depends="build_project">
+	<target name="generate_jars" depends="build_project, generate_javadoc">
 		<delete dir="${jar_directory}" />
 		<mkdir dir="${jar_directory}" />
 
 		<jar destfile="${jar_directory}\identicon.jar" basedir="${build_directory}" keepcompression="true">
-			
+
 		</jar>
 
 
+	</target>
+	
+	<target name="generate_javadoc">
+		<delete dir="${doc_directory}"/>
+		<mkdir dir="${doc_directory}"/>
+	    <javadoc access="protected" author="true" sourcepath="${src_directory}" destdir="${doc_directory}"/>
 	</target>
 
 

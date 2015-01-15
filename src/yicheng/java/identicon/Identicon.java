@@ -1,5 +1,7 @@
 package yicheng.java.identicon;
 
+
+
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -12,6 +14,14 @@ import java.security.NoSuchAlgorithmException;
 
 import javax.imageio.ImageIO;
 
+/**<pre>This is a wrapper class for generating Github like identicon,
+ *      you can create the identicon of any string input by creating 
+ *      the object Identicon and then save to path.</pre>
+ * 
+ * @author Yicheng Zhang
+ * 
+ */
+
 public class Identicon {
 	private int width = 600;
 	private int height = 600;
@@ -23,6 +33,7 @@ public class Identicon {
 
 	private byte[] hashValues;
 
+	
 	public Identicon(String name, Color blockColor) {
 		this.name = name;
 		this.hashValues = getHashValues(this.name);
